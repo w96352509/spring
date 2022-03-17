@@ -14,7 +14,7 @@ public class MvcConfig implements WebMvcConfigurer {
 	private static final String[] CLASSPATH_RESOURCE_LOCATIONS =
 	    {
 	        "classpath:/resources/images/",
-			 "classpath:/resources/",
+			"classpath:/resources/",
 	        "classpath:/resources/static/", 
 			"classpath:/resources/templates/"
 	    };

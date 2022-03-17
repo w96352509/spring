@@ -11,8 +11,8 @@ import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 @Configuration
 public class DCUtilityConciguration {
 	@Bean("datasource")
-	//@Scope("singleton")
-	@Scope("prototype")
+	@Scope("singleton")
+	//@Scope("prototype")
 	public DataSource dataSource() {
 		System.out.println("DataSource Singleton 物件");
 		//產生一個獨體資料庫來源物件
@@ -24,3 +24,4 @@ public class DCUtilityConciguration {
 		return datasource;
 	}
 }
+

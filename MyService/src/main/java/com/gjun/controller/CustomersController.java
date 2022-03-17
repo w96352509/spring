@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gjun.controller.component.AutoGenId;
 import com.gjun.domain.Customers;
+import com.gjun.domain.Greeting;
+import com.gjun.myservice.ApplicationConfig;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 
 @RestController
@@ -44,5 +47,7 @@ public class CustomersController {
 		customers.setCountry("中華民國");
 		return customers;
 	}
+	
+	
 
 }
