@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-		<title>我是首頁</title>
+<html>
+	<head>
+		<title>我是首頁Home</title>
 		<meta charset="UTF-8"/>
-		<script type="text/javascript" th:href="@{/js/vue.js}"></script>
+		<!--CDN-->
 		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 	</head>
 	<body>
@@ -12,7 +11,7 @@
 			<legend>Vue Demo</legend>
 			<h1>您好 {{message}}</h1>
 			<div><input type="text" v-model:text="keyin"/></div>
-			<div>{{keyin}}</div>
+			<div>輸入內容(同步Binding):{{keyin}}</div>
 		</fieldset>
 		
 		<script type="text/javascript">

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class GjunCustomersController {
 
 	//傳遞庫次編號 進行單一客戶資料查詢作業 參數傳遞採用QueryString
-	@GetMapping(path = {"/customers/qry" , "/customers/qryid"} )
+	@GetMapping(path = "/customers/qry" )
 	private String customersQryById(String customerId) {
 		//?customerId 完全相同 會自動接收
 		//確認是否傳遞合法編號
