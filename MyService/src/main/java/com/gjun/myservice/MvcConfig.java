@@ -1,3 +1,4 @@
+/*
 package com.gjun.myservice;
 
 import org.springframework.context.annotation.Configuration;
@@ -6,7 +7,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-@EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer {
 	public MvcConfig() {
 		//System.out.println("static files定義");
@@ -27,3 +27,4 @@ public class MvcConfig implements WebMvcConfigurer {
        
     }
 }
+*/

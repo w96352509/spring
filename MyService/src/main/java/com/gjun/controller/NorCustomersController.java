@@ -100,13 +100,12 @@ public class NorCustomersController {
 						customers.setAddress(rs.getString("Address"));
 						customers.setPhone(rs.getString("Phone"));
 						customers.setCountry(rs.getString("Country"));
-
 						return customers;
-					}, new Object[] { customerId } // = customerId
+					}
+					, new Object[] { customerId } // = customerId
 			);
 			// 建構ResponseEntity
-			return new ResponseEntity<>(result, HttpStatus.OK);
-
+			return new ResponseEntity<>(result,HttpStatus.OK);
 		} catch (DataAccessException ex) {
 			Message msg = new Message();
 			msg.setCode(400); // 客製化訊息清單代號

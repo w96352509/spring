@@ -3,15 +3,79 @@
     <head>
         <title>客戶資料查詢</title>
         <meta charset="UTF-8"/>
+        <script type="text/javascript" th:src="@{/vue.min.js}"></script>
+        <script type="text/javascript" th:src="@{/jquery-3.6.0.min.js}"></script>
+        <!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>-->
     </head>
     <body>
-        <fieldset>
+        <fieldset id="app">
             <legend>客戶查詢-客戶編號</legend>
             <div>
                 <div>客戶編號</div>
-                <input type="text"/>
-                <button>查詢</button>
+                <!--使用Vue Data Model進行雙向綁定-->
+                <input type="text" v-model:value="customerid" maxlength="5"/>
+                <button v-on:click="query">查詢</button>
             </div>
+            <div>查詢客戶編號:{{customerid}}</div>
+            <fieldset v-show="isShow">
+                <legend>查詢結果</legend>
+                
+            </fieldset>
         </fieldset>
+
+        <script>
+            //建構一個Vue Instance
+            var app=new Vue(
+                //settings JS物件
+                {
+                    el:'#app',
+                    //Data Model
+                    data:{
+                        customerid:'ABC',
+                        message:'',
+                        result:{customerId:'',companyName:'',address:'',phone:'',country:''},
+                        isShow:false
+                    },
+                    methods:{
+                        query:function(){
+                        	cid=this.customerid;
+                            app.isShow=false;
+                            console.log("查詢編號:"+this.customerid);
+                            var serviceURL='../nor/customers/id/'+this.customerid+'/rawdata';
+                            //進行非同步處理(AJAX-XMLHttpRequest/XMLHttpResponse)
+                           	$.ajax(
+                           //JS物件屬性定義相對屬性
+							{
+								//呼喚服務位址
+								url:serviceURL,
+								//傳送方式
+								type:'GET',
+								//callback status code:2xx
+								success:function(data,status,xhr){
+									alert("查詢成功:"+cid);
+									app.isShow=true;
+                                    //TODO  Render UI(渲染畫面)
+								},
+                                //callback status 4xx or 5xx
+                                error:function(xhr,status,error){
+                                	var errorMsg=xhr.responseText;
+                                    //反序列化成JS 物件
+                                    var errorObj=JSON.parse(errorMsg);
+                                    alert(errorObj.msg);
+                                }
+							}	
+		
+							);
+                        }
+                    },
+                    watch:{
+                        customerId:function(newValue,oldValue){
+                           console.log('輸入的新編號:'+newValue);     
+                        }
+                    }
+                }
+
+            );
+        </script>
     </body>
 </html>

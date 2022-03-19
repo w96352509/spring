@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 //提供庫戶資料的View
+//Page Controller
 @Controller
 public class UiCustomersController {
 
