@@ -17,9 +17,31 @@
                 <button v-on:click="query">查詢</button>
             </div>
             <div>查詢客戶編號:{{customerid}}</div>
+            <div>{{message}}</div>
             <fieldset v-show="isShow">
                 <legend>查詢結果</legend>
-                
+                <table>
+                    <tr>
+                        <td>客戶編號</td>
+                        <td>{{result.customerId}}</td>
+                    </tr>
+                    <tr>
+                        <td>公司代號</td>
+                        <td>{{result.companyName}}</td>
+                    </tr>
+                    <tr>
+                        <td>聯絡地址</td>
+                        <td>{{result.address}}</td>
+                    </tr>
+                    <tr>
+                        <td>聯絡電話</td>
+                        <td>{{result.phone}}</td>
+                    </tr>
+                    <tr>
+                        <td>國家別</td>
+                        <td>{{result.country}}</td>
+                    </tr>
+                </table>
             </fieldset>
         </fieldset>
 
@@ -53,7 +75,10 @@
 								//callback status code:2xx
 								success:function(data,status,xhr){
 									alert("查詢成功:"+cid);
+									console.log(data);
 									app.isShow=true;
+                                    //將callback 結果(Json Object) 指派
+                                    app.result=data;
                                     //TODO  Render UI(渲染畫面)
 								},
                                 //callback status 4xx or 5xx
@@ -68,9 +93,15 @@
 							);
                         }
                     },
+                    // customerid 識別 , 有分大小寫
                     watch:{
-                        customerId:function(newValue,oldValue){
-                           console.log('輸入的新編號:'+newValue);     
+                        "customerid":function(newValue,oldValue){
+                           console.log('輸入的新編號:'+newValue);
+                           if(newValue.length==0){
+                              this.message="客戶編號尚未輸入";
+                           }else{
+                            this.message="";
+                           }    
                         }
                     }
                 }
