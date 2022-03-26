@@ -43,7 +43,9 @@ public class GjunUbikeController {
 			InputStreamReader reader=new InputStreamReader(is,"UTF-8");
 			//....即使讀取到字串 目的要反序列化成可操作的物件
 			//4.如何將Json反序列化(JavaBean依據)成可以操作的集合物件 進行查詢
-			//5 Gson 個體物件
+			//TypeToken，它是gson提供的數據類型轉換器
+            //java反射包中的TypeToken類是用來解決java運行時泛型類型被擦除的問題
+            //5 Gson 個體物件
 			Gson gson=new Gson();
 			Type listType = new TypeToken<List<UbikeData>>(){}.getType();
 			data=gson.fromJson(reader,listType);

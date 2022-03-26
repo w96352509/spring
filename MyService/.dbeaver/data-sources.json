@@ -1,66 +1,17 @@
 {
 	"folders": {},
 	"connections": {
-		"mysql8-17fb0e73078-242c23d9976c49c7": {
+		"mysql8-17fc0237d33-1fc215442cb1e7b0": {
 			"provider": "mysql",
 			"driver": "mysql8",
-			"name": "finweb",
+			"name": "homelab",
 			"save-password": true,
 			"read-only": false,
 			"configuration": {
 				"host": "localhost",
 				"port": "3306",
-				"database": "finweb",
-				"url": "jdbc:mysql://localhost:3306/finweb",
-				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
-				"type": "dev",
-				"auth-model": "native"
-			}
-		},
-		"mysql8-17fb0e79d8e-2631c84a2795e729": {
-			"provider": "mysql",
-			"driver": "mysql8",
-			"name": "finweb 2",
-			"save-password": true,
-			"read-only": false,
-			"configuration": {
-				"host": "localhost",
-				"port": "3306",
-				"database": "finweb",
-				"url": "jdbc:mysql://localhost:3306/finweb",
-				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
-				"type": "dev",
-				"auth-model": "native"
-			}
-		},
-		"mysql8-17fb100fec8-7c58f2253e33a4bf": {
-			"provider": "mysql",
-			"driver": "mysql8",
-			"name": "finweb 3",
-			"save-password": true,
-			"read-only": false,
-			"configuration": {
-				"host": "localhost",
-				"port": "3306",
-				"database": "finweb",
-				"url": "jdbc:mysql://localhost:3306/finweb",
-				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
-				"type": "dev",
-				"auth-model": "native",
-				"handlers": {}
-			}
-		},
-		"mysql8-17fb10a79a8-11175e3a2268e740": {
-			"provider": "mysql",
-			"driver": "mysql8",
-			"name": "finweb 4",
-			"save-password": true,
-			"read-only": false,
-			"configuration": {
-				"host": "localhost",
-				"port": "3306",
-				"database": "finweb",
-				"url": "jdbc:mysql://localhost:3306/finweb",
+				"database": "homelab",
+				"url": "jdbc:mysql://localhost:3306/homelab",
 				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
 				"type": "dev",
 				"auth-model": "native",

@@ -1,3 +1,4 @@
+
 package com.gjun.myservice;
 
 import org.springframework.context.annotation.Configuration;
@@ -6,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-@EnableWebMvc
+//@EnableWebMvc
 //在外設定 Origins 位置
 public class WebCorsConfig implements WebMvcConfigurer {
     @Override

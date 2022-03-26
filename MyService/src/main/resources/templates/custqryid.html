@@ -16,8 +16,10 @@
                 <input type="text" v-model:value="customerid" maxlength="5"/>
                 <button v-on:click="query">查詢</button>
             </div>
-            <div>查詢客戶編號:{{customerid}}</div>
-            <div>{{message}}</div>
+            <div>
+                <div>查詢客戶編號:{{customerid}}</div>
+                <div>{{message}}</div>
+            </div>
             <fieldset v-show="isShow">
                 <legend>查詢結果</legend>
                 <table>
@@ -26,7 +28,7 @@
                         <td>{{result.customerId}}</td>
                     </tr>
                     <tr>
-                        <td>公司代號</td>
+                        <td>公司行號</td>
                         <td>{{result.companyName}}</td>
                     </tr>
                     <tr>
@@ -34,14 +36,14 @@
                         <td>{{result.address}}</td>
                     </tr>
                     <tr>
-                        <td>聯絡電話</td>
+                        <td>聯絡電話</td></td></td>
                         <td>{{result.phone}}</td>
                     </tr>
                     <tr>
                         <td>國家別</td>
                         <td>{{result.country}}</td>
                     </tr>
-                </table>
+                </table>    
             </fieldset>
         </fieldset>
 
@@ -53,14 +55,13 @@
                     el:'#app',
                     //Data Model
                     data:{
-                        customerid:'ABC',
+                        customerid:'1111',
                         message:'',
                         result:{customerId:'',companyName:'',address:'',phone:'',country:''},
                         isShow:false
                     },
                     methods:{
                         query:function(){
-                        	cid=this.customerid;
                             app.isShow=false;
                             console.log("查詢編號:"+this.customerid);
                             var serviceURL='../nor/customers/id/'+this.customerid+'/rawdata';
@@ -74,16 +75,15 @@
 								type:'GET',
 								//callback status code:2xx
 								success:function(data,status,xhr){
-									alert("查詢成功:"+cid);
 									console.log(data);
-									app.isShow=true;
-                                    //將callback 結果(Json Object) 指派
+                                    app.isShow=true;
+                                    //將callback結果(Json Object)指派給Vue Data Model
                                     app.result=data;
                                     //TODO  Render UI(渲染畫面)
 								},
                                 //callback status 4xx or 5xx
                                 error:function(xhr,status,error){
-                                	var errorMsg=xhr.responseText;
+                                    var errorMsg=xhr.responseText;
                                     //反序列化成JS 物件
                                     var errorObj=JSON.parse(errorMsg);
                                     alert(errorObj.msg);
@@ -93,15 +93,14 @@
 							);
                         }
                     },
-                    // customerid 識別 , 有分大小寫
                     watch:{
                         "customerid":function(newValue,oldValue){
                            console.log('輸入的新編號:'+newValue);
                            if(newValue.length==0){
-                              this.message="客戶編號尚未輸入";
+                               this.message="客戶編號尚未輸入!!!";
                            }else{
-                            this.message="";
-                           }    
+                               this.message="";
+                           }     
                         }
                     }
                 }
