@@ -63,6 +63,7 @@ public class IoTController {
 		
 		//整理 Body 部分
 		//TODO 建構DHT  整理Http  Request Body HttpEntity(or Http Content)
+		//value的值
 		DHT dht=new DHT();
 		dht.temper=data.getTemper();
 		dht.humi=data.getHumi();
@@ -75,7 +76,7 @@ public class IoTController {
 		dhtIot.id="DHT22";
 		dhtIot.save=true;
 		
-		
+		//value的值設定
 		dhtIot.value=new String[] {dhtString};
 		ArrayList<DHTIoTData> list=new ArrayList<DHTIoTData>();
 		list.add(dhtIot);
