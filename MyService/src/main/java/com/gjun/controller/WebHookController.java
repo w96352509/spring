@@ -58,10 +58,12 @@ public class WebHookController {
 				//TODO 配合NLP(自然語言解析AI推測)
 				//...
 				//回應內容
-				String content=String.format("晨晨說:%s",message);
+				String content=String.format("晨晨說:%s",message); //得到message : 這是什麼
 				//TODO 送訊息到Line Bot 推送到使用者端(已讀已回) send push message api
 				//HttpClient
-				CloseableHttpClient client=HttpClients.createDefault();
+				//這裡以上是服務讀取
+				//這裡以下回傳給服務的整理設定
+				org.apache.http.client.HttpClient client=HttpClients.createDefault();
 				//設定前端請求方法
 				HttpPost request=new HttpPost();
 				//設定URL
@@ -71,16 +73,23 @@ public class WebHookController {
 					request.setHeader("Content-Type","application/json");
 					//設定Token
 					request.setHeader("Authorization",token);
-					//設定Http Body
+					//設定Http Body 做這些設定才能讀到你配置Body
 					//建構物件(值得配置)
 					SendMessage msg=new SendMessage();
 					msg.type="text";  //還傳型態
-					msg.text=content; //還傳內容配置
+					msg.text=content; //還傳內容配置 下方處理content 中的 Message
 					//窗口物件(顯示於窗口)
+					//寄給誰 跟 內容配置content 中的 Message
 					SendData sendData=new SendData();
 					sendData.to=userid; //使用者
-					sendData.messages=new SendMessage[] {msg}; //將訊息配置放入窗口顯示
-					//序列化成Json String
+					sendData.messages=new SendMessage[] {msg}; //還傳內容配置的值
+					//讀取部分:
+					/*"message": {
+		                "type": "text",
+		                "id": "14353798921116",
+		                "text": "這是什麼"
+		            }*/					
+					//序列化成Json String ㄒㄖ  
 					Gson gson=new Gson();
 					String sendJson=gson.toJson(sendData);
 					//封裝成Entity
